@@ -28,6 +28,22 @@ public class DialogContentElements extends BasePOM {
     @FindBy(xpath = "//div[contains(text(),'successfully')]")
     private WebElement successMessage;
 
+    @FindBy(xpath = "//ms-text-field[@placeholder='GENERAL.FIELD.NAME']//input")
+    private WebElement nameSearchInput;
+
+    @FindBy(xpath = "//ms-search-button//button")
+    private WebElement searchButton;
+
+    @FindBy(xpath = "//ms-edit-button//button")
+    private WebElement editButton;
+
+    @FindBy(xpath = "//ms-delete-button//button")
+    private WebElement deleteButton;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    private WebElement deleteSubmitButton;
+
+
     public void createCountry() {
         addButton.click();
         nameInput.sendKeys("HalitTestCountry999");
@@ -39,6 +55,22 @@ public class DialogContentElements extends BasePOM {
         wait.until(ExpectedConditions.visibilityOf(successMessage));
         Assert.assertTrue(successMessage.isDisplayed());
         Assert.assertTrue(successMessage.getText().toLowerCase().contains("successfully"));
+    }
+
+    public void editCountry() {
+        nameSearchInput.sendKeys("HalitTestCountry999");
+        searchButton.click();
+        editButton.click();
+        nameInput.clear();
+        nameInput.sendKeys("HalitTestCountry923");
+        saveButton.click();
+    }
+
+    public void deleteCountry() {
+        nameSearchInput.sendKeys("HalitTestCountry923");
+        searchButton.click();
+        waitUntilVisibleAndClickableThenClick(deleteButton);
+        waitUntilVisibleAndClickableThenClick(deleteSubmitButton);
     }
 
 }
