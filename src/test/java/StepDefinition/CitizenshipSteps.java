@@ -18,5 +18,13 @@ public class CitizenshipSteps {
         dialogContentElements.createCitizenship(name, shortName);
     }
 
+    @When("User edit {string} citizenship to {string}")
+    public void user_edit_citizenship(String existingCitizenshipName, String newCitizenshipName) {
+        navigationBarElements = new NavigationBarElements();
+        dialogContentElements = new DialogContentElements();
+
+        navigationBarElements.navigateToCitizenshipPage();
+        dialogContentElements.editCitizenship(existingCitizenshipName, newCitizenshipName);
+    }
 
 }
