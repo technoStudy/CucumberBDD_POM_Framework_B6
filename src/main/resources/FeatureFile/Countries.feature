@@ -20,5 +20,5 @@ Feature: Countries Functionality
     Given User is on login page
     When User enter admin credentials
     Then User should login successfully
-    When User delete country
+    When User delete Country
     Then Success message should be displayed

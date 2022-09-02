@@ -25,4 +25,22 @@ public class CountriesSteps {
         dialogContentElements.validateSuccessMessage();
     }
 
+    @When("User edit Country")
+    public void user_edit_country() {
+        navigationBarElements = new NavigationBarElements();
+        dialogContentElements = new DialogContentElements();
+
+        navigationBarElements.navigateToCountriesPage();
+        dialogContentElements.editCountry();
+    }
+
+    @When("User delete Country")
+    public void user_delete_country() {
+        navigationBarElements = new NavigationBarElements();
+        dialogContentElements = new DialogContentElements();
+
+        navigationBarElements.navigateToCountriesPage();
+        dialogContentElements.deleteCountry();
+    }
+
 }
