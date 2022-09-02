@@ -43,6 +43,9 @@ public class DialogContentElements extends BasePOM {
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement deleteSubmitButton;
 
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='shortName']//input")
+    private WebElement shortNameInput;
+
 
     public void createCountry() {
         addButton.click();
@@ -71,6 +74,13 @@ public class DialogContentElements extends BasePOM {
         searchButton.click();
         waitUntilVisibleAndClickableThenClick(deleteButton);
         waitUntilVisibleAndClickableThenClick(deleteSubmitButton);
+    }
+
+    public void createCitizenship(String name, String shortName) {
+        addButton.click();
+        nameInput.sendKeys(name);
+        shortNameInput.sendKeys(shortName);
+        saveButton.click();
     }
 
 }
