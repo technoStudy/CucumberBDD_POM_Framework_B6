@@ -83,4 +83,13 @@ public class DialogContentElements extends BasePOM {
         saveButton.click();
     }
 
+    public void editCitizenship(String existingName, String newName) {
+        nameSearchInput.sendKeys(existingName);
+        searchButton.click();
+        editButton.click();
+        nameInput.clear();
+        nameInput.sendKeys(newName);
+        saveButton.click();
+    }
+
 }
