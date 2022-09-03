@@ -1,5 +1,7 @@
 package POM;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -46,6 +48,9 @@ public class DialogContentElements extends BasePOM {
     @FindBy(xpath = "//ms-text-field[@formcontrolname='shortName']//input")
     private WebElement shortNameInput;
 
+    @FindBy(xpath = "//fuse-progress-bar//mat-progress-bar")
+    private WebElement progressBar;
+
 
     public void createCountry() {
         addButton.click();
@@ -90,6 +95,14 @@ public class DialogContentElements extends BasePOM {
         nameInput.clear();
         nameInput.sendKeys(newName);
         saveButton.click();
+    }
+
+    public void deleteCitizenship(String citizenshipName) {
+        nameSearchInput.sendKeys(citizenshipName);
+        searchButton.click();
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("fuse-progress-bar > *"), 0));
+        deleteButton.click();
+        waitUntilVisibleAndClickableThenClick(deleteSubmitButton);
     }
 
 }
