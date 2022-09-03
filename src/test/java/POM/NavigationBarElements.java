@@ -22,6 +22,9 @@ public class NavigationBarElements extends BasePOM {
     @FindBy(xpath = "//span[text()='Citizenships']/..")
     private WebElement citizenshipButton;
 
+    @FindBy(xpath = "//span[text()='Fees']/..")
+    private WebElement feesButton;
+
     public void navigateToCountriesPage() {
         setupButton.click();
         parametersButton.click();
@@ -32,6 +35,12 @@ public class NavigationBarElements extends BasePOM {
         setupButton.click();
         parametersButton.click();
         citizenshipButton.click();
+    }
+
+    public void navigateToFeesPage() {
+        setupButton.click();
+        parametersButton.click();
+        feesButton.click();
     }
 
 }
