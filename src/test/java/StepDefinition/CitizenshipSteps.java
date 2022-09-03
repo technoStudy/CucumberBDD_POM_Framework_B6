@@ -27,4 +27,13 @@ public class CitizenshipSteps {
         dialogContentElements.editCitizenship(existingCitizenshipName, newCitizenshipName);
     }
 
+    @When("User delete {string} citizenship")
+    public void user_delete_citizenship(String citizenshipToDelete) {
+        navigationBarElements = new NavigationBarElements();
+        dialogContentElements = new DialogContentElements();
+
+        navigationBarElements.navigateToCitizenshipPage();
+        dialogContentElements.deleteCitizenship(citizenshipToDelete);
+    }
+
 }
