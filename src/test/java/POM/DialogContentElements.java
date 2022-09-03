@@ -51,6 +51,12 @@ public class DialogContentElements extends BasePOM {
     @FindBy(xpath = "//fuse-progress-bar//mat-progress-bar")
     private WebElement progressBar;
 
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='budgetAccountIntegrationCode']//input")
+    private WebElement integrationCodeInput;
+
+    @FindBy(xpath = "//ms-integer-field[@formcontrolname='priority']//input")
+    private WebElement priorityInput;
+
 
     public void createCountry() {
         addButton.click();
@@ -103,6 +109,15 @@ public class DialogContentElements extends BasePOM {
         wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("fuse-progress-bar > *"), 0));
         deleteButton.click();
         waitUntilVisibleAndClickableThenClick(deleteSubmitButton);
+    }
+
+    public void createFee(String name, String code, String intCode, String priority) {
+        addButton.click();
+        nameInput.sendKeys(name);
+        codeInput.sendKeys(code);
+        integrationCodeInput.sendKeys(intCode);
+        priorityInput.sendKeys(priority);
+        saveButton.click();
     }
 
 }
