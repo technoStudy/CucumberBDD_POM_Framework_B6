@@ -66,6 +66,7 @@ public class DialogContentElements extends BasePOM {
     }
 
     public void validateSuccessMessage() {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(text(),'successfully')]")));
         wait.until(ExpectedConditions.visibilityOf(successMessage));
         Assert.assertTrue(successMessage.isDisplayed());
         Assert.assertTrue(successMessage.getText().toLowerCase().contains("successfully"));
@@ -118,6 +119,24 @@ public class DialogContentElements extends BasePOM {
         integrationCodeInput.sendKeys(intCode);
         priorityInput.sendKeys(priority);
         saveButton.click();
+    }
+
+    public void editFee(String existingName, String newName) throws InterruptedException {
+        nameSearchInput.sendKeys(existingName);
+        searchButton.click();
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("tbody[role='rowgroup']>tr"), 1));
+        editButton.click();
+        nameInput.clear();
+        nameInput.sendKeys(newName);
+        saveButton.click();
+    }
+
+    public void deleteFee(String feeName) throws InterruptedException {
+        nameSearchInput.sendKeys(feeName);
+        searchButton.click();
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("tbody[role='rowgroup']>tr"), 1));
+        deleteButton.click();
+        deleteSubmitButton.click();
     }
 
 }
