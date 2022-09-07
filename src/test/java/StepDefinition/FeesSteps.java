@@ -18,5 +18,23 @@ public class FeesSteps {
         dialogContentElements.createFee(name, code, intCode, priority);
     }
 
+    @When("User edit Fee {string} and change it to {string}")
+    public void user_edit_fee_and_change_it_to(String existingFeeName, String newFeeName) throws InterruptedException {
+        navigationBarElements = new NavigationBarElements();
+        dialogContentElements = new DialogContentElements();
+
+        navigationBarElements.navigateToFeesPage();
+        dialogContentElements.editFee(existingFeeName, newFeeName);
+    }
+
+    @When("User delete Fee {string}")
+    public void user_delete_Fee(String feeName) throws InterruptedException {
+        navigationBarElements = new NavigationBarElements();
+        dialogContentElements = new DialogContentElements();
+
+        navigationBarElements.navigateToFeesPage();
+        dialogContentElements.deleteFee(feeName);
+    }
+
 
 }
